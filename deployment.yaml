@@ -15,7 +15,7 @@ spec:
         app: pyapp
     spec:
       containers:
-      - name: 
+      - name:  pyapp
         image: sandeep9m/pyapp:latest
         ports:
         - containerPort: 5000
