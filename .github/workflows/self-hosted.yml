@@ -1,8 +1,6 @@
 name: self-hosted-demo
 on: 
-  push:
-    branches:
-      - master
+  workflow_dispatch:
 jobs:
   testing-self-hosted-deployments:
     runs-on: ga-aws
