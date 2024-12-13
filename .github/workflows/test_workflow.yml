@@ -27,7 +27,7 @@ jobs:
           docker image push ${{ env.DOCKERHUB_USERNAME }}/pyapp:v${{ github.run_number}}
           docker image push ${{ env.DOCKERHUB_USERNAME }}/pyapp:latest
   deploy:
-    runs-on: aws-ga #self-hosted
+    runs-on: ga-aws #self-hosted
     steps:
        - name: deploy_app
          run: |
