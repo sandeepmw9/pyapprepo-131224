@@ -31,7 +31,8 @@ jobs:
     steps:
        - name: deploy_app
          run: |
-           docker container run -d --name pyapp ${{ env.DOCKERHUB_USERNAME }}/pyapp:latest
+           kubectl apply -f deployment.yaml
+           kubectl apply -f service.yaml
 
 
 
