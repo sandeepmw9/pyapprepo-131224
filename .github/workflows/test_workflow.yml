@@ -29,10 +29,12 @@ jobs:
   deploy:
     runs-on: ga-aws #self-hosted
     steps:
-       - name: deploy_app
-         run: |
-           kubectl apply -f deployment.yaml
-           kubectl apply -f service.yaml
+      - name: get-code
+        uses: actions/checkout@v4
+      - name: deploy_app
+        run: |
+          kubectl apply -f deployment.yaml
+          kubectl apply -f service.yaml
 
 
 
