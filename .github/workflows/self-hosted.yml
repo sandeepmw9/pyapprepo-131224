@@ -1,0 +1,12 @@
+name: self-hosted-demo
+on: 
+  push:
+    branches:
+      - master
+jobs:
+  testing-self-hosted-deployments:
+    runs-on: ga-aws
+    steps:
+      - name: run container
+        run: |
+          docker container run -d --name webserver1 nginx
