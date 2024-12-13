@@ -21,11 +21,15 @@ jobs:
           username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ env.DOCKERHUB_PASSWORD }}
       - name: push-to-dockerhub
-        run: docker image push ${{ env.DOCKERHUB_USERNAME }}/pyapp:v${{ github.run_number}}
-#   deploy:
-#     runs-on: ubuntu-latest
-#     container:
-#       image: 
+        run: | 
+          docker image push ${{ env.DOCKERHUB_USERNAME }}/pyapp:v${{ github.run_number}}
+          docker image push ${{ env.DOCKERHUB_USERNAME }}/pyapp:latest
+  deploy:
+    runs-on: aws-ga #self-hosted
+    steps:
+       - name: deploy_app
+         run: |
+           docker container run -d --name pyapp ${{ env.DOCKERHUB_USERNAME }}/pyapp:latest
 
 
 
