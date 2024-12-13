@@ -1,4 +1,4 @@
-# ------------------- Stage 1: Build Stage ------------------------------
+# stage 1 build
 FROM python:3.9 AS base
 WORKDIR /app
 
@@ -6,15 +6,15 @@ COPY backend/ .
 
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
-# ------------------- Stage 2: Final Stage ------------------------------
 
+# stage 2
 FROM python:3.9-slim
 
-# WORKDIR /app
+WORKDIR /app
 
-# COPY --from=base /usr/local/lib/python3.9/site-packages/ /usr/local/lib/python3.9/site-packages/
+COPY --from=base /usr/local/lib/python3.9/site-packages/ /usr/local/lib/python3.9/site-packages/
 
-# COPY --from=base /app /app
+COPY --from=base /app /app
 
 EXPOSE 5000
 
